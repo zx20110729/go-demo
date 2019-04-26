@@ -126,7 +126,35 @@ func printByte() {
 	fmt.Printf("c = %c\n", c)
 }
 
-func main() {
-	printByte()
+//string类型测试
+func stringExercise() {
+	var str1 = "hello"
+	str2 := "world"
+	str3 := fmt.Sprintf("%s %s", str1, str2)
+	fmt.Println(str3)
 
+	n := len(str3)
+	fmt.Printf("len(str3)=%d\n", n)
+
+	//切片 从0个角标开始截取5个
+	subStr := str3[0:5]
+	fmt.Println("subStr =", subStr)
+	subStr = str3[6:]
+	fmt.Println("subStr =", subStr)
+
+}
+
+//反转字符串
+func reverse(str string) string {
+	var result string
+	strLen := len(str)
+	for i := strLen - 1; i >= 0; i-- {
+		result = result + fmt.Sprintf("%c", str[i])
+	}
+	return result
+}
+func main() {
+	var s = "hello world"
+	s2 := reverse(s)
+	fmt.Println(s2)
 }
