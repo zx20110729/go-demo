@@ -114,6 +114,9 @@ func printString() {
 	fmt.Println(s)
 	fmt.Println(s2)
 	fmt.Println("--------")
+	// %q打印带类型  "hello"
+	str := "hello"
+	fmt.Printf("%q\n", str)
 }
 
 //打印byte类型
@@ -125,4 +128,5 @@ func printByte() {
 
 func main() {
 	printByte()
+
 }
