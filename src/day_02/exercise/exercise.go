@@ -153,8 +153,18 @@ func reverse(str string) string {
 	}
 	return result
 }
+//反转字符串
+func reverse1(str string) string{
+	var result []byte
+	tmp :=[]byte(str)
+	length:=len(str)
+	for i:=0; i<length;i++{
+		result=append(result,tmp[length-i-1])
+	}
+	return string(result)
+}
 func main() {
-	var s = "hello world"
-	s2 := reverse(s)
+	var s = "hello world!"
+	s2 := reverse1(s)
 	fmt.Println(s2)
 }
