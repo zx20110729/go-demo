@@ -80,4 +80,15 @@ func printDefer() {
 	i++
 	defer fmt.Println("defer 2 i =", i)
 	fmt.Println(i)
+
+	myDefer(5)
+}
+
+func myDefer(a int) {
+	defer fmt.Println("defer 1")
+	if a == 5 {
+		fmt.Println("return")
+		return
+	}
+	defer fmt.Println("defer 2")
 }
