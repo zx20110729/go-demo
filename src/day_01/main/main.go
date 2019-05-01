@@ -1,8 +1,8 @@
 package main
 
 import (
-	"day_01/package_demo/cacl"
-	"day_01/package_demo/goroute"
+	"day_01/cacl"
+	"day_01/goroute"
 	"fmt"
 	"time"
 )

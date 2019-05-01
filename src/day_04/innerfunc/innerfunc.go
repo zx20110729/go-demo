@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -66,14 +67,21 @@ func fab(n int) int {
 	return sum
 }
 
-//闭包
+//闭包测试
 func closePackage() {
 	f := adder()
 	fmt.Println(f(1))
 	fmt.Println(f(100))
 	fmt.Println(f(1000))
+
+	suffixFunc1 := makeSuffixFunc(".jpg")
+	suffixFunc2 := makeSuffixFunc(".png")
+	fmt.Println(suffixFunc1("test.jpg"))
+	fmt.Println(suffixFunc2("test"))
+
 }
 
+//闭包1
 func adder() func(int) int {
 	//x会被返回的函数引用共享
 	var x int
@@ -82,6 +90,18 @@ func adder() func(int) int {
 		return x
 	}
 }
+
+//闭包2
+func makeSuffixFunc(suffix string) func(string) string {
+	return func(name string) string {
+		result := name
+		if !strings.HasSuffix(name, suffix) {
+			result = name + suffix
+		}
+		return result
+	}
+}
+
 func main() {
 	closePackage()
 }

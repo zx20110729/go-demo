@@ -242,7 +242,7 @@ defer关键字
 5. append：用来追加元素到数组、slice中
 6. panic和recover：用来做错误处理
     > new声明一个对象并返回一个指针，make初始化并返回实际的对象
-7. 闭包：一个函数及其相关的引用环境组合而成的实体
+7. 闭包：一个函数及其相关的引用环境组合而成的实体,类似java中类的封装
    
    ```go
         func Adder() func(int) int{
