@@ -66,6 +66,44 @@ func printString() {
 	fmt.Println(str, "is start with", prefix, ":", printHasPrefix(str, prefix))
 	fmt.Println(str, "is end with", suffix, ":", printHasSuffix(str, suffix))
 }
+
+// 回文判断
+func process(str string) bool {
+	t := []rune(str)
+	length := len(t)
+	if length <= 1 {
+		return true
+	}
+	for i := 0; i < length-1; i++ {
+		if t[i] != t[length-1] {
+			return false
+		}
+		length--
+	}
+	return true
+}
+
+//统计字符串里的字母 数字 和空格的个数
+func count(str string) (wordCount, spaceCount, otherCount int) {
+	t := []rune(str)
+	for _, v := range t {
+		switch {
+		case v >= 'a' && v <= 'z':
+			fallthrough
+		case v >= 'A' && v <= 'Z':
+			wordCount++
+		case v == ' ':
+			spaceCount++
+		case v >= '0' && v <= '9':
+			otherCount++
+		}
+	}
+	fmt.Printf("wordCount: %d, spaceCount: %d, otherCount: %d.\n", wordCount, spaceCount, otherCount)
+	return
+}
 func main() {
-	printAtoi()
+	// var str string = "Hello world! 123456"
+	var str string = "上海自来a水aa来自海上"
+	result := process(str)
+	fmt.Println("result:", result)
 }
