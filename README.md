@@ -241,7 +241,20 @@ defer关键字
 4. make：用来分配内存，主要用来分配引用类型，比如chan、map、slice
 5. append：用来追加元素到数组、slice中
 6. panic和recover：用来做错误处理
+    > new声明一个对象并返回一个指针，make初始化并返回实际的对象
+7. 闭包：一个函数及其相关的引用环境组合而成的实体
+   
+   ```go
+        func Adder() func(int) int{
+            var x int
+            return func (num int) int{
+                x+=num
+                return x
+            }
+        }
+   ```
 
+8. x
 数组与分片
 map数据结构
 package介绍
