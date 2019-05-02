@@ -3,6 +3,6 @@ package common
 import "fmt"
 
 //打印并换行
-func Pn(str string) {
-	fmt.Println(str)
+func Pn(a ...interface{}) (n int, err error) {
+	return fmt.Println(a)
 }
