@@ -126,24 +126,28 @@ type User struct {
 
 //map测试
 func myMap() {
-	u:=User{
-		Name:"zhou",Age:12
-	}
+	//声明1
 	var m map[string]User
 	m = make(map[string]User)
-	m["1"] = User{"zhou", 20}
+	m["1"] = User{"zhou", 1}
 	fmt.Println(m["1"].Name)
+	//声明2
 	var m2 = map[string]User{
-		"1":User{
-			Name:"zhou",
-			Age:12
+		"1": User{
+			Name: "zhou2",
+			Age:  2,
 		},
-		"2":User{
-			"pan":1
-		}
+		"2": User{
+			"pan2", 2,
+		},
 	}
-
-	fmt.Println(m2["1"].Name)
+	fmt.Println(m2["2"].Name)
+	//声明3
+	var m3 = map[string]User{
+		"1": {"zhou3", 3},
+		"2": {"pan3", 3},
+	}
+	fmt.Println(m3["1"].Name)
 }
 
 func main() {
