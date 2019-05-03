@@ -1,7 +1,6 @@
 package main
 
 import (
-	c "common"
 	"fmt"
 	"math"
 	"strconv"
@@ -24,22 +23,22 @@ func now() string {
 
 	switch time.Saturday {
 	case today + 0:
-		c.Pn("Today.")
+		fmt.Println("Today.")
 	case today + 1:
-		c.Pn("Tomorrow.")
+		fmt.Println("Tomorrow.")
 	case today + 2:
-		c.Pn("In two days.")
+		fmt.Println("In two days.")
 	default:
-		c.Pn("Too far away.")
+		fmt.Println("Too far away.")
 	}
 	now := time.Now()
 	switch {
 	case now.Hour() < 12:
-		c.Pn("Good monring!")
+		fmt.Println("Good monring!")
 	case now.Hour() < 17:
-		c.Pn("Good afternoon!")
+		fmt.Println("Good afternoon!")
 	default:
-		c.Pn("Good evening!")
+		fmt.Println("Good evening!")
 	}
 	nowStr := now.Format("2006-01-02 15:04:05")
 	return nowStr
@@ -47,10 +46,10 @@ func now() string {
 
 // defer
 func myDefer() {
-	defer c.Pn("The end.")
-	c.Pn("Hello world!")
+	defer fmt.Println("The end.")
+	fmt.Println("Hello world!")
 	for i := 0; i < 10; i++ {
-		defer c.Pn(strconv.Itoa(i))
+		defer fmt.Println(strconv.Itoa(i))
 	}
 }
 
@@ -58,13 +57,13 @@ func myDefer() {
 func pointer() {
 	i, j := 42, 2701
 	p := &i
-	c.Pn(strconv.Itoa(*p))
+	fmt.Println(strconv.Itoa(*p))
 	*p = 21
-	c.Pn(strconv.Itoa(i))
+	fmt.Println(strconv.Itoa(i))
 
 	p = &j
 	*p = *p / 37
-	c.Pn(strconv.Itoa(j))
+	fmt.Println(strconv.Itoa(j))
 }
 
 //结构体
@@ -83,28 +82,70 @@ var (
 func myStruct() {
 	var v Vertex
 	v = Vertex{1, 2}
-	c.Pn(v)
+	fmt.Println(v)
 	//隐式间接调用
 	p := &v
 	p.X = 100
-	c.Pn(v.X)
-	c.Pn(p.Y)
+	fmt.Println(v.X)
+	fmt.Println(p.Y)
 	//打印成员变量
-	c.Pn("v1 =", v1)
-	c.Pn("v2 =", v2)
-	c.Pn("v3 =", v3)
-	c.Pn("p1 =", *p1)
+	fmt.Println("v1 =", v1)
+	fmt.Println("v2 =", v2)
+	fmt.Println("v3 =", v3)
+	fmt.Println("p1 =", *p1)
 }
 
 //数据和分片
 func arrayAndSlice() {
 	//数组
 	var arr [10]int = [10]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-	c.Pn(arr)
+	fmt.Println(arr)
 	s := arr[1:8]
-	c.Pn(s)
+	s = append(s, 10, 11, 12)
+	fmt.Println(s)
 	fmt.Printf("%T,%T\n", arr, s)
+	a := make([]int, 5)
+	b := make([]int, 0, 5)
+	fmt.Println(len(a), cap(a))
+	fmt.Println(len(b), cap(b))
 }
+
+//range
+func myRange() {
+	var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+	for i, v := range pow {
+		fmt.Println("i =", i, " v =", v)
+	}
+}
+
+type User struct {
+	Name string
+	Age  int
+}
+
+//map测试
+func myMap() {
+	u:=User{
+		Name:"zhou",Age:12
+	}
+	var m map[string]User
+	m = make(map[string]User)
+	m["1"] = User{"zhou", 20}
+	fmt.Println(m["1"].Name)
+	var m2 = map[string]User{
+		"1":User{
+			Name:"zhou",
+			Age:12
+		},
+		"2":User{
+			"pan":1
+		}
+	}
+
+	fmt.Println(m2["1"].Name)
+}
+
 func main() {
-	arrayAndSlice()
+	myMap()
 }
