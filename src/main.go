@@ -147,7 +147,15 @@ func myMap() {
 		"1": {"zhou3", 3},
 		"2": {"pan3", 3},
 	}
-	fmt.Println(m3["1"].Name)
+	//插入或修改元素
+	m3["3"] = User{"baby", 0}
+	fmt.Println(m3["3"].Name)
+	//删除元素
+	delete(m3, "3")
+	fmt.Println(m3)
+	//双赋值检验键是否存在
+	pan, ok := m3["3"]
+	fmt.Println(pan, ok)
 }
 
 func main() {

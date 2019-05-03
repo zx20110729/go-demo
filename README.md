@@ -274,7 +274,22 @@ go build -o bin/main day_01/package_demo/main
 ### map数据结构
 
 1. 映射的零值为nil。nil映射既没有键，也不能添加键。
+
 2. make函数会返回给定类型的映射，并将其初始化。
+
+   ```go
+   //在map中插入或修改元素
+   m[key] = elem
+   //获取元素
+   elem = m[key]
+   //删除元素
+   delete(m,key)
+   //通过双赋值检测某个 键 是否存在。若键存在，ok=true；否ok=false
+   //若键不存在，elem为零值
+   elem,ok = m[key]
+   ```
+
+   
 
 ### package介绍
 
