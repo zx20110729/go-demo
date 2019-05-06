@@ -88,6 +88,28 @@ go build -o bin/main day_01/package_demo/main
 
 ### 函数声明及注释
 
+- Go语言没有类的概念，但是可以为结构体类型定义**方法**。
+  方法就是一类带特殊接收者参数的函数，方法接收者在它自己的参数列表内，位于func关键字和方法名之间
+
+  ```go
+  type Vertex struct{
+      X,Y int
+  }
+  //方法接收者
+  func (v Vertex) Add() int{
+      return v.X+v.Y
+  }
+  //指针接收者
+  //使用指针接收者原因
+  //1. 方法能够修改其接收者的值
+  //2. 避免每次调用方法时复制该值（接收者）
+  func (v &Vertex) Sub() int{
+      return x.X-v.Y
+  }
+  ```
+
+  
+
 - 函数声明
 
   func 函数名 (参数列表) (返回值列表){}
@@ -97,6 +119,63 @@ go build -o bin/main day_01/package_demo/main
 - 注释
   1. 单行注释： //
   2. 多行注释：/* */
+
+### 接口 interface
+
+* 接口类型是有一组方法签名定义的集合。
+
+* 接口类型的变量可以保存任何实现了这些方法的值。
+
+* 接口也是值，可以用作函数的参数和返回值。
+
+* 空接口：interface{}，可以保存任何类型的值。
+
+* 类型断言：t,ok:=i.(T)，该语句断言接口值i保存了具体类型T，并将其底层数据复制给t；若t不是T类型，t被初始化为零值，ok=false。
+
+* 类型选择：是一种按顺序从几个类型断言中选择分支的结构。
+
+  ```go
+  switch v:=i.(type){
+      case T1:
+      	//i的类型为T1
+      case T2:
+      	//i的类型为T2
+      default:
+      	//没有匹配
+  }
+  ```
+
+  
+
+* 接口与隐式实现
+
+  ```go
+  //结构体通过实现一个接口所有的方法来实现该接口。
+  //隐式接口从接口的实现中解耦了定义，这样接口就可以出现在任何包中，无需提前准备。
+  //因此也就无需在每一个实现上增加新的接口名称。
+  type I interface{
+      M()
+  }
+  type T struct{
+      S string
+  }
+  //方法绑定
+  func (t T) M(){
+      fmt.Println(t.S)
+  }
+  
+  func main(){
+      var i I = T{"Hello"}
+      //此处打印 Hello
+      i.M()
+  }
+  ```
+
+  
+
+### 结构体 struct
+
+- 
 
 ### 常量
 

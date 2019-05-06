@@ -102,6 +102,26 @@ func makeSuffixFunc(suffix string) func(string) string {
 	}
 }
 
+//方法接收者
+type Vertex struct {
+	X, Y int
+}
+
+func (v Vertex) sum() int {
+	return v.X + v.Y
+}
+func (v *Vertex) Scale(i int) {
+	v.X = v.X * i
+	v.Y = v.Y * i
+}
+
+func printMethod() {
+	var v Vertex
+	v = Vertex{10, 20}
+	fmt.Println(v.sum())
+	v.Scale(2)
+	fmt.Println(v)
+}
 func main() {
-	closePackage()
+	printMethod()
 }
