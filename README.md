@@ -1,6 +1,25 @@
 # go-demo
-
-### golang语言特性
+## 一、基础
+### 数据类型
+  - 基础类型 
+    - 数值型
+        1. 整数型(int,int8,int16,int32,int64,uint,uint8,uint16,uint32,uint64,byte)
+        2. 浮点型(float32,float64)
+    - 字符型
+    - 布尔型(bool)
+    - 字符串(string)
+  - 派生类型
+    - 指针(pointer)
+    - 数组
+    - 结构体(struct)
+    - 管道(channel)
+    - 函数
+    - 切片(slice)
+    - 接口(interface)
+    - map
+    
+    
+## 二、golang语言特性
 
 1. 垃圾回收
 
@@ -371,6 +390,27 @@ go build -o bin/main day_01/package_demo/main
    
 
 ### package介绍
+
+
+
+### 并发
+
+1. Go程（goroutine）是由Go运行时管理的轻量级线程。
+
+2. 信道是带有类型的管道，可以通过信道使用信道操作符<-来发送或接收值。
+
+   ```go
+   //创建int类型的信道
+   ch = make(chan int)
+   //带缓冲的信道
+   cacheChan = make(chan int,1024)
+   //将v发送至信道ch
+   ch <- v
+   //从信道ch接收值,并赋予v
+   v := <-ch
+   ```
+
+   
 
 NOTE:
 
