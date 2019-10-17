@@ -6,5 +6,5 @@ import (
 
 func main() {
 	official.HelloWorld()
-	official.Func2()
+	official.Go5()
 }
